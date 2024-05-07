@@ -17,21 +17,24 @@ public class Controller {
 
     private boolean isLoggedIn = false;
     private dbCommunication database;
+    public Controller() {
+        this.database = new dbCommunication();
+    }
 
-    public void logInButtonClicked(){
+    public void logInButtonClicked() throws DbException {
         if (!isLoggedIn) {
             System.out.println("User logged in...");
             logInButton.setText("logged in");
-            String username = usernameField.getText(); // Retrieve the text from the username field
-            String password = passwordField.getText(); // Retrieve the text from the password field
+            String username = usernameField.getText();
+            String password = passwordField.getText();
             System.out.println("Username: " + username);
             System.out.println("Password: " + password);
             usernameField.setVisible(false);
             passwordField.setVisible(false);
             isLoggedIn = true;
             logOutMenuObj.setVisible(true);
+            database.connect("TheZone",username,password);
         } else {
-            // Already logged in, do nothing or provide feedback
             System.out.println("Already logged in.");
         }
     }
