@@ -24,11 +24,12 @@ public class dbCommunication implements DbInterface{
             System.out.println(e);
             throw new DbException("Error connecting to the database", e);
         }
+        System.out.println("connected!");
         return true;
     }
 
     @Override
-    public boolean disConnect(String database) throws DbException {
+    public boolean disconnect(String database) throws DbException {
         try {
             if (this.con != null && !this.con.isClosed()) {
                 con.close();
