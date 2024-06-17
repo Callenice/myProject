@@ -22,7 +22,7 @@ public class dbCommunication implements DbInterface{
             this.con.setAutoCommit(false);
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e);
-            throw new DbException("Error connecting to the database", e);
+            throw new DbException("Error connecting to the database"+e, e);
         }
         System.out.println("connected!");
         return true;
